@@ -1,5 +1,5 @@
-# YC CLI sa-terraform iam key
-key.json
+# Secrets
+**.secret.*
 
 # Local .terraform directories
 **/.terraform/*
