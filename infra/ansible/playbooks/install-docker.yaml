@@ -43,6 +43,7 @@
         name:
           - docker
           - docker-compose
-    - name: Setup user
-      shell: sudo usermod -aG docker $USER && newgrp docker
-      become: false
+    - name: Setup user [usermod]
+      shell: sudo usermod -aG docker $USER
+    - name: Setup user [newgrp]
+      shell: newgrp docker
