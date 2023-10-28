@@ -1,0 +1,8 @@
+#cloud-config
+users:
+  - name: dima-batalov
+    groups: sudo
+    shell: /bin/bash
+    sudo: 'ALL=(ALL) NOPASSWD:ALL'
+    ssh-authorized-keys:
+      - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEIW1RgZ1VaF5oVXaru7AbDT1+vUd+b7wIDpGtEKatEd dima-batalov@dima-batalov-x'

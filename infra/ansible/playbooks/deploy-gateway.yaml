@@ -1,0 +1,25 @@
+---
+- name: Deploy Gateway
+  hosts: gateway
+  tasks:
+    - name: Copy sa-registry.secret.json
+      ansible.builtin.copy:
+        src: ../../data/sa-registry.secret.json # need to leave /files, so ../ х2
+        dest: /home/dima-batalov/sa-registry.secret.json
+    - name: Login registry
+      shell: cat /home/dima-batalov/sa-registry.secret.json | docker login --username json_key --password-stdin cr.yandex
+    - name: Pull default Docker image
+      community.docker.docker_image:
+        name: "cr.yandex/crp38865vs41akamblti/backend:latest"
+        source: pull
+    # - name: Stop all containers
+    #   shell: docker ps | awk '{print $1}' | tail -n +1 | xargs -I{} docker container stop {}
+    - name: Serve
+      community.docker.docker_container:
+        name: "backend"
+        image: "cr.yandex/crp38865vs41akamblti/backend:latest"
+        detach: true
+        ports:
+          - "8080:80"
+        published_ports: 0.0.0.0:8080:80/tcp
+        restart_policy: always

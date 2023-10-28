@@ -1,0 +1,12 @@
+{
+  "name": "neuralearn-backend",
+  "version": "1.0.0",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "node ./src/app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "~4.16.1"
+  }
+}
