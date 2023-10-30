@@ -1,5 +1,5 @@
-const express = require('express')
-const messagesRouter = require('./messages/index')
+import express from 'express'
+import messagesRouter from './messages/index.js'
 
 const router = express.Router()
 
@@ -9,4 +9,4 @@ router.get('/', (_req, res, _next) => {
 
 router.use('/', messagesRouter)
 
-module.exports = router
+export default router

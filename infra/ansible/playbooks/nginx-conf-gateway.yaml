@@ -1,0 +1,17 @@
+---
+- name: Upload Nginx Configuartion
+  hosts: gateway
+  become: true
+  tasks:
+    - name: Copy nginx.conf
+      copy:
+        src: ../../data/nginx.conf
+        dest: /etc/nginx/
+    # - name: Copy cert
+    #   copy:
+    #     src: ../../data/cert.secret.pem
+    #     dest: /etc/nginx/
+    # - name: Copy privkey
+    #   copy:
+    #     src: ../../data/privkey.secret.pem
+    #     dest: /etc/nginx/
