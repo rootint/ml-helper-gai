@@ -1,4 +1,5 @@
-const express = require('express')
+import express from 'express'
+
 const router = express.Router()
 
 router.post('/send_message', (_req, res, _next) => {
@@ -9,4 +10,4 @@ router.post('/receive_message', (_req, res, _next) => {
   res.json({ping: 'receive'})
 })
 
-module.exports = router
+export default router
