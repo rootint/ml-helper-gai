@@ -1,0 +1,26 @@
+---
+- name: Deploy model
+  hosts: model
+  become: true
+  tasks: 
+    - name: Install src
+      copy:
+        src: ../../../../neuralearn_ml/src
+        dest: /model/src
+    # - name: Download model
+    #   copy:
+    #     src: ../../../../neuralearn_ml/model
+    #     dest: /model/model
+    - name: Update packages
+      pip:
+        chdir: /model
+        requirements: /model/src/requirements.txt
+    - name: Download service file
+      copy:
+        src: gai_model.service
+        dest: /etc/systemd/system/
+    - name: Restart model service
+      service:
+        name: gai_model
+        enabled: yes
+        state: restarted

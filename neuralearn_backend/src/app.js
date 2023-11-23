@@ -4,6 +4,7 @@ import express from 'express'
 import path from 'path'
 import ejs from 'ejs'
 import morgan from 'morgan'
+import dotenv from 'dotenv'
 
 import indexRouter from './routes/index.js'
 
@@ -11,6 +12,8 @@ import {fileURLToPath} from 'url'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+dotenv.config()
 
 // const express = require('express')
 // const path = require('path')
