@@ -1,1 +1,8 @@
 .DS_Store
+neuralearn_ml/llama2-ft-neuralearn
+neuralearn_ml/merged_model
+neuralearn_ml/llama.cpp
+neuralearn_ml/llama_dl
+neuralearn_ml/production/model.gguf
+neuralearn_ml/production/llama2_v2.gguf
+neuralearn_ml/production/orca2.gguf
