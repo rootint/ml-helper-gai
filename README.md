@@ -9,3 +9,4 @@ An intuitive Flutter app harnessing a fine-tuned LLM to empower machine learning
 
 ## Models
 All the models we implemented are in our HuggingFace repository [here](https://huggingface.co/RNDRandoM/neuralearn-qlora-ft-7b/tree/main). All these models are based on LLaMa 2 7B and they are fine-tuned on our custom dataset.
+
