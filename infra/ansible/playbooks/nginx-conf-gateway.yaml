@@ -3,15 +3,27 @@
   hosts: gateway
   become: true
   tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
     - name: Copy nginx.conf
       copy:
         src: ../../data/nginx.conf
         dest: /etc/nginx/
-    # - name: Copy cert
+    # - name: Copy zip
     #   copy:
-    #     src: ../../data/cert.secret.pem
-    #     dest: /etc/nginx/
-    # - name: Copy privkey
-    #   copy:
-    #     src: ../../data/privkey.secret.pem
-    #     dest: /etc/nginx/
+    #     src: ../../data/model.zip
+    #     dest: /var/www/static/model.zip
+    - name: Copy cert
+      copy:
+        src: ../../data/cert.secret.pem
+        dest: /etc/nginx/
+    - name: Copy privkey
+      copy:
+        src: ../../data/privkey.secret.pem
+        dest: /etc/nginx/
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted

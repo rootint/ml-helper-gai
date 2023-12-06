@@ -1,0 +1,1 @@
+yc cm certificate content --name gai-cert --chain ./cert.secret.pem --key ./privkey.secret.pem

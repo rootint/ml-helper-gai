@@ -1,8 +1,0 @@
-[Unit]
-Description=GAI Model Service
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=/model/src/app.py
-Restart=on-failure

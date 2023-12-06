@@ -1,26 +1,31 @@
 ---
 - name: Deploy model
-  hosts: model
+  hosts: gateway
   become: true
-  tasks: 
+  tasks:
     - name: Install src
       copy:
-        src: ../../../../neuralearn_ml/src
-        dest: /model/src
-    # - name: Download model
-    #   copy:
-    #     src: ../../../../neuralearn_ml/model
-    #     dest: /model/model
-    - name: Update packages
-      pip:
-        chdir: /model
-        requirements: /model/src/requirements.txt
-    - name: Download service file
+        src: ../../../neuralearn_ml/src
+        dest: /neuralearn/
+    - name: Install tools
       copy:
-        src: gai_model.service
-        dest: /etc/systemd/system/
+        src: tools
+        dest: /neuralearn/
+    - name: Prepare dir for models
+      file:
+        path: /uploaded_models
+        state: directory
+    - name: Download model
+      get_url:
+        url: https://huggingface.co/RNDRandoM/neuralearn-qlora-ft-7b/resolve/main/llama2_v2.gguf?download=true
+        dest: /uploaded_models/llama2_v2.gguf
+    - name: Prepare python && pip
+      command: bash /neuralearn/tools/install-python311.sh
+    - name: Install requirements
+      command: bash /neuralearn/tools/install-req.sh
+      ignore_errors: true
     - name: Restart model service
-      service:
-        name: gai_model
-        enabled: yes
-        state: restarted
+      command: sh /neuralearn/tools/run-server.sh
+      environment: 
+        PORT: "8080"
+        NAME: "llama2_v2.gguf"
