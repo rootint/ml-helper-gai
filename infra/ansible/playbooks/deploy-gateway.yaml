@@ -20,6 +20,8 @@
         name: "backend"
         image: "cr.yandex/crp38865vs41akamblti/backend:latest"
         detach: true
+        env:
+          MODEL_URL: 10.6.0.10
         published_ports: 
           - 127.0.0.1:8080:80/tcp
         restart_policy: always

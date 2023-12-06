@@ -1,6 +1,6 @@
 ---
 - name: Install Docker
-  hosts: all
+  hosts: gateway
   become: true
   tasks:
     - name: Register version codename
@@ -47,3 +47,4 @@
       shell: sudo usermod -aG docker $USER
     - name: Setup user [newgrp]
       shell: newgrp docker
+      become: false

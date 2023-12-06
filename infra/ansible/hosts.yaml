@@ -1,7 +1,9 @@
 gai:
   hosts:
     gateway:
-      ansible_host: 62.84.121.111
+      ansible_host: 158.160.83.67
+    model:
+      ansible_host: 158.160.17.34
   vars:
     ansible_connection: ssh
     ansible_user: dima-batalov

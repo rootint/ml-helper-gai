@@ -1,0 +1,5 @@
+flask==3.0.0
+langchain==0.0.340
+gpt4all==2.0.2
+faiss-cpu==1.7.4
+llama-cpp-python==0.2.20
